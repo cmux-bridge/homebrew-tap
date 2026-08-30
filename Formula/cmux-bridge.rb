@@ -1,0 +1,43 @@
+# Installs the bridge that lets an iPhone read and drive cmux on this Mac.
+#
+# A prebuilt universal binary rather than a source build: the audience has cmux
+# and wants their phone to reach it, not a Swift toolchain. Homebrew's own
+# service block replaces the hand-written launchd plist the other installers
+# carry, which is the main reason this is the better way in on a Mac.
+class CmuxBridge < Formula
+  desc "Read and drive cmux on your Mac from an iPhone"
+  homepage "https://github.com/cmux-bridge/mobile-app"
+  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.1.0/cmux-bridge-0.1.0-universal.tar.gz"
+  version "0.1.0"
+  sha256 "1bdacab90a3ab04944d5a0aa13a1ca7b76e7fc44b9db967116da0922f392ab5a"
+  license "MIT"
+
+  depends_on :macos
+
+  def install
+    bin.install "cmux-bridged"
+  end
+
+  service do
+    run [opt_bin/"cmux-bridged", "--port", "7420"]
+    keep_alive true
+    run_type :immediate
+    log_path var/"log/cmux-bridged.log"
+    error_log_path var/"log/cmux-bridged.log"
+  end
+
+  def caveats
+    <<~EOS
+      Start it, and have it start at login:
+        brew services start cmux-bridge
+
+      It relays what cmux exposes, so cmux has to be running too. To pair a
+      phone, print the links and enter one in the app:
+        cmux-bridged --print-pairing
+    EOS
+  end
+
+  test do
+    assert_match "cmux-bridged", shell_output("#{bin}/cmux-bridged --help")
+  end
+end
