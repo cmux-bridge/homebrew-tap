@@ -31,9 +31,15 @@ class CmuxBridge < Formula
       Start it, and have it start at login:
         brew services start cmux-bridge
 
+      It listens on port 7420. If you already installed the bridge another
+      way, stop that one first — two of them cannot hold the same port.
+
       It relays what cmux exposes, so cmux has to be running too. To pair a
       phone, print the links and enter one in the app:
         cmux-bridged --print-pairing
+
+      If something is wrong, the log says what:
+        tail -20 #{var}/log/cmux-bridged.log
     EOS
   end
 

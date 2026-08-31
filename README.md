@@ -15,6 +15,10 @@ The bridge runs beside cmux and serves a small API on your own network —
 nothing passes through a cloud service. It relays what cmux exposes, so cmux
 has to be running too.
 
+If it is not reachable, the log says why:
+
+    tail -20 /opt/homebrew/var/log/cmux-bridged.log
+
 To pair a phone, print the links and enter one of them in the app:
 
     cmux-bridged --print-pairing
