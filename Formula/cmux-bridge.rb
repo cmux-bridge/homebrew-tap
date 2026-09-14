@@ -7,9 +7,9 @@
 class CmuxBridge < Formula
   desc "Read and drive cmux on your Mac from an iPhone"
   homepage "https://github.com/cmux-bridge/mobile-app"
-  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.1/cmux-bridge-0.2.1-universal.tar.gz"
-  version "0.2.1"
-  sha256 "b0f0a28c1fc78b8307b16f2e3e00444cf8355c953264df8dba2e7c44223563eb"
+  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.2/cmux-bridge-0.2.2-universal.tar.gz"
+  version "0.2.2"
+  sha256 "f3b6b9ba5725b833e4a028d397e5e447dc7fd845ed32d2d60d402ef529b6c717"
   license "MIT"
 
   depends_on :macos
