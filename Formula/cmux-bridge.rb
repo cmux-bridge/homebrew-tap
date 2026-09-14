@@ -7,9 +7,9 @@
 class CmuxBridge < Formula
   desc "Read and drive cmux on your Mac from an iPhone"
   homepage "https://github.com/cmux-bridge/mobile-app"
-  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.2/cmux-bridge-0.2.2-universal.tar.gz"
-  version "0.2.2"
-  sha256 "f3b6b9ba5725b833e4a028d397e5e447dc7fd845ed32d2d60d402ef529b6c717"
+  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.3/cmux-bridge-0.2.3-universal.tar.gz"
+  version "0.2.3"
+  sha256 "ad45ddf2050470c32bc1c293ef0530b8dc0604774813ba8da85a4a1faf45c59d"
   license "MIT"
 
   depends_on :macos
@@ -34,7 +34,12 @@ class CmuxBridge < Formula
       It listens on port 7420. If you already installed the bridge another
       way, stop that one first — two of them cannot hold the same port.
 
-      It relays what cmux exposes, so cmux has to be running too. To pair a
+      It relays what cmux exposes, so cmux has to be running, and its Socket
+      Control Mode (cmux → Settings → Automation) set to "Automation mode":
+      the default admits only processes started inside cmux, and this is a
+      service. The log says so if it is refused.
+
+      To pair a
       phone, show a code to scan:
         cmux-bridged --pairing-qr tailscale
         cmux-bridged --pairing-qr lan
