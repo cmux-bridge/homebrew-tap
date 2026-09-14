@@ -7,9 +7,9 @@
 class CmuxBridge < Formula
   desc "Read and drive cmux on your Mac from an iPhone"
   homepage "https://github.com/cmux-bridge/mobile-app"
-  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.1.0/cmux-bridge-0.1.0-universal.tar.gz"
-  version "0.1.0"
-  sha256 "1bdacab90a3ab04944d5a0aa13a1ca7b76e7fc44b9db967116da0922f392ab5a"
+  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.0/cmux-bridge-0.2.0-universal.tar.gz"
+  version "0.2.0"
+  sha256 "7e58f3cec120b8fc24040d727c3eae1e920a53c4acd89132e8eae62786d712b7"
   license "MIT"
 
   depends_on :macos
@@ -35,7 +35,11 @@ class CmuxBridge < Formula
       way, stop that one first — two of them cannot hold the same port.
 
       It relays what cmux exposes, so cmux has to be running too. To pair a
-      phone, print the links and enter one in the app:
+      phone, show a code to scan:
+        cmux-bridged --pairing-qr tailscale
+        cmux-bridged --pairing-qr lan
+
+      Or read the links and type one in by hand:
         cmux-bridged --print-pairing
 
       If something is wrong, the log says what:
