@@ -7,9 +7,9 @@
 class CmuxBridge < Formula
   desc "Read and drive cmux on your Mac from an iPhone"
   homepage "https://github.com/cmux-bridge/mobile-app"
-  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.0/cmux-bridge-0.2.0-universal.tar.gz"
-  version "0.2.0"
-  sha256 "7e58f3cec120b8fc24040d727c3eae1e920a53c4acd89132e8eae62786d712b7"
+  url "https://github.com/cmux-bridge/homebrew-tap/releases/download/v0.2.1/cmux-bridge-0.2.1-universal.tar.gz"
+  version "0.2.1"
+  sha256 "b0f0a28c1fc78b8307b16f2e3e00444cf8355c953264df8dba2e7c44223563eb"
   license "MIT"
 
   depends_on :macos
@@ -42,11 +42,10 @@ class CmuxBridge < Formula
       Or read the links and type one in by hand:
         cmux-bridged --print-pairing
 
-      If a phone can connect but every request is cut off at once, the
-      macOS firewall is refusing this binary (it is not signed with a
-      Developer ID). Allow it, then restart:
-        sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add #{bin}/cmux-bridged
-        sudo /usr/libexec/ApplicationFirewall/socketfilterfw --unblockapp #{bin}/cmux-bridged
+      If the macOS firewall is on, it refuses this binary (it is not signed
+      with a Developer ID): a phone connects and is cut off at once. Allow
+      it — Homebrew cannot, the rule needs administrator rights — and restart:
+        sudo #{opt_bin}/cmux-bridged --allow-firewall
         brew services restart cmux-bridge
       The firewall keys on the installed file, so repeat this after an upgrade.
 
