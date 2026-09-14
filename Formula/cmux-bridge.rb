@@ -42,6 +42,14 @@ class CmuxBridge < Formula
       Or read the links and type one in by hand:
         cmux-bridged --print-pairing
 
+      If a phone can connect but every request is cut off at once, the
+      macOS firewall is refusing this binary (it is not signed with a
+      Developer ID). Allow it, then restart:
+        sudo /usr/libexec/ApplicationFirewall/socketfilterfw --add #{bin}/cmux-bridged
+        sudo /usr/libexec/ApplicationFirewall/socketfilterfw --unblockapp #{bin}/cmux-bridged
+        brew services restart cmux-bridge
+      The firewall keys on the installed file, so repeat this after an upgrade.
+
       If something is wrong, the log says what:
         tail -20 #{var}/log/cmux-bridged.log
     EOS
